@@ -12,14 +12,15 @@ function App() {
   const [tasks, setTasks] = useState<ITask[]>([])
 
   function AddTask(taskTitle: string) {
-    setTasks([
-      ...tasks,
-      {
-        id: crypto.randomUUID(),
-        title: taskTitle,
-        isCompleted: false
-      }
-    ])
+    taskTitle &&
+      setTasks([
+        ...tasks,
+        {
+          id: crypto.randomUUID(),
+          title: taskTitle,
+          isCompleted: false
+        }
+      ])
   }
 
   return (
