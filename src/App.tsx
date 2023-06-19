@@ -23,10 +23,16 @@ function App() {
       ])
   }
 
+  function deleteTaskById(taskId: string) {
+    const newTasks = tasks.filter((task) => task.id !== taskId)
+    setTasks(newTasks)
+    console.log('fui clicado')
+  }
+
   return (
     <div>
       <Header onAddTask={AddTask} />
-      <Tasks tasks={tasks} />
+      <Tasks tasks={tasks} onDelete={deleteTaskById} />
     </div>
   )
 }
