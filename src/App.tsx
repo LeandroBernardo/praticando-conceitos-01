@@ -26,13 +26,29 @@ function App() {
   function deleteTaskById(taskId: string) {
     const newTasks = tasks.filter((task) => task.id !== taskId)
     setTasks(newTasks)
-    console.log('fui clicado')
+  }
+
+  function toogleTaskCompletedById(taskId: string) {
+    const newTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        return {
+          ...task,
+          isCompleted: !task.isCompleted
+        }
+      }
+      return task
+    })
+    setTasks(newTasks)
   }
 
   return (
     <div>
       <Header onAddTask={AddTask} />
-      <Tasks tasks={tasks} onDelete={deleteTaskById} />
+      <Tasks
+        tasks={tasks}
+        onDelete={deleteTaskById}
+        onComplete={toogleTaskCompletedById}
+      />
     </div>
   )
 }
